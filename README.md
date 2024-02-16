@@ -6,6 +6,7 @@ NoPixel 4.0 player list (scoreboard)
 
 # Important Note
 change folder name to hpx-playerlist
+
 POV: IF YOU DONT CHANGE IT AFTER CLOSING IT DONT CLOSE IN SERVER 
 
 # Installation 
