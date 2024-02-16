@@ -4,6 +4,8 @@ NoPixel 4.0 player list (scoreboard)
 #pic
 ![Screenshot (165)](https://github.com/pooyahpx/playerlist-NP-4.0-/assets/73234330/e2e2d533-19fb-4312-a910-4e066779a8ae)
 
+# Important text
+change folder name to hpx-playerlist
 
 # Installation 
 1. downloda this script
