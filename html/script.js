@@ -31,7 +31,7 @@ function openMenu(data){
 
 
 function append(variable) { 
-  $.post(`http://ac-playerlist/getData`, JSON.stringify({variable }), function (x) {
+  $.post(`http://hpx-playerlist/getData`, JSON.stringify({variable }), function (x) {
     $(".online-list").empty()
     $.each(x, function (i, v) { 
       $(".online-list").append(`
@@ -46,7 +46,7 @@ function append(variable) {
 
 function closeNUI() {
   $("body").hide()
-  $.post("http://ac-playerlist/close", JSON.stringify({}));
+  $.post("http://hpx-playerlist/close", JSON.stringify({}));
 }
 
 function update() { 
