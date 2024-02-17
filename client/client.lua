@@ -1,9 +1,9 @@
 local playerList = {}
 local disconnectedPlayers = {}
-AC = {}
+QB = {}
 
 RegisterCommand("list",function()
-    TriggerEvent('ac-playerlist:client:manualUpdate')
+    TriggerEvent('qb-playerlist:client:manualUpdate')
     Wait(500)
     if playerList then 
         SendNUIMessage({
@@ -19,9 +19,9 @@ RegisterCommand("list",function()
 end)
 
 
-RegisterNetEvent('ac-playerlist:client:manualUpdate')
-AddEventHandler('ac-playerlist:client:manualUpdate', function(activePlayers,disPlayers)
-    TriggerServerEvent('ac-playerlist:server:manualUpdate')
+RegisterNetEvent('qb-playerlist:client:manualUpdate')
+AddEventHandler('qb-playerlist:client:manualUpdate', function(activePlayers,disPlayers)
+    TriggerServerEvent('qb-playerlist:server:manualUpdate')
     playerList = activePlayers
     disconnectedPlayers = disPlayers
 end)
