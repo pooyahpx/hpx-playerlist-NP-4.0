@@ -17,3 +17,6 @@ POV: IF YOU DONT CHANGE IT AFTER CLOSING IT DONT CLOSE IN SERVER
 
 # how can you use it?
 Open your chat and type /list  
+
+# HELP
+IF YOU NEED MORE HELP POYA#3724
