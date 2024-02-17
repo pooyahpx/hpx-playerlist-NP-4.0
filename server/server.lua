@@ -1,6 +1,6 @@
 local activePlayers = {}
 local disconnectedPlayers = {}
-AC = {}
+QB = {}
 QBCore = exports['qb-core']:GetCoreObject()
 
 
@@ -20,16 +20,15 @@ AddEventHandler('playerDropped', function(reason)
 end)
 
 
-RegisterNetEvent('ac-playerlist:server:manualUpdate')
-AddEventHandler('ac-playerlist:server:manualUpdate', function()
+RegisterNetEvent('qb-playerlist:server:manualUpdate')
+AddEventHandler('qb-playerlist:server:manualUpdate', function()
     local src = source
     if permission(src) then
-        TriggerClientEvent('ac-playerlist:client:manualUpdate', src, activePlayers,disconnectedPlayers)
+        TriggerClientEvent('qb-playerlist:client:manualUpdate', src, activePlayers,disconnectedPlayers)
     else
-        
+        --print("yetkin yok")
     end
 end)
-
 
 function GetPlayerInfo(player)
     local steamName = GetPlayerName(player) 
@@ -40,10 +39,10 @@ function GetPlayerInfo(player)
 end
 
 function permission(source)
-    if AC.Admin["control"] then 
+    if QB.Admin["control"] then 
         local xPlayer = QBCore.Functions.GetPlayer(source)
         local perms = xPlayer.Functions.GetPermission()
-        for k, v in ipairs(AC.Admin["perms"]) do
+        for k, v in ipairs(QB.Admin["perms"]) do
             if perms == v then
                 return true
             end
@@ -62,4 +61,3 @@ function tableIndex(tbl, value)
     end
     return nil
 end
-
