@@ -1,10 +1,9 @@
-AC = {}
+QB = {}
 
-AC.Settings = {
+QB.Settings = {
     ["command"] = "list"
 }
 
-AC.Admin  = {
-    ["control"] = false,--If this is false, anyone can open the menu. If true, the menu can be opened by authorized persons at the bottom.
+QB.Admin  = {
+    ["control"] = false,
     ["perms"] = {'admin', 'mod'}
-}
