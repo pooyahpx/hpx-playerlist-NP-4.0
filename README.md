@@ -1,3 +1,7 @@
+you can download fix version and new update 1.1 version from there 
+
+https://github.com/pooyahpx/hpx-playerlist-NP-4.0/releases/tag/update
+
 # playerlist-NP-4.0
 NoPixel 4.0 player list (scoreboard)
 
