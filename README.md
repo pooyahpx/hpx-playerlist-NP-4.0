@@ -15,7 +15,7 @@ POV: IF YOU DONT CHANGE FOLDRR NAME AFTER CLOSE IT IN GAME IT DONT CLOSED SO CHA
 1. downloda this script
 2. drag and drop folder in resource folder 
 3. start folder in server.cfg
-4. stop or remove qb-scoreboard ( in version 1.1 you should not change folder name )
+4. stop or remove qb-scoreboard
 
 # how can you use it?
 Open your chat and type /list  
