@@ -3,12 +3,24 @@ local disconnectedPlayers = {}
 QB = {}
 QBCore = exports['qb-core']:GetCoreObject()
 
+-- Initialize player list with currently connected players when resource starts
+CreateThread(function()
+    Wait(1000) -- Wait for QBCore to be ready
+    local players = GetPlayers()
+    for _, playerIdStr in ipairs(players) do
+        local src = tonumber(playerIdStr)
+        local steamName, playerId, playerIdentifier = GetPlayerInfo(src)
+        local playerInfo = {id = playerId, name = steamName, identifier = playerIdentifier}
+        table.insert(activePlayers, playerInfo)
+    end
+end)
 
 AddEventHandler('playerConnecting', function()
     local player = source 
     local steamName, playerId, playerIdentifier = GetPlayerInfo(player)
     local playerInfo = {id = playerId, name = steamName, identifier = playerIdentifier}
     table.insert(activePlayers, playerInfo)
+    UpdateAllClients()
 end)
 
 AddEventHandler('playerDropped', function(reason)
@@ -16,7 +28,14 @@ AddEventHandler('playerDropped', function(reason)
     local steamName, playerId, playerIdentifier = GetPlayerInfo(player)
     local playerInfo = {id = playerId, name = steamName, identifier = playerIdentifier}
     table.insert(disconnectedPlayers, playerInfo)
-    table.remove(activePlayers, tableIndex(activePlayers, player)) 
+    
+    -- Remove player from activePlayers by finding the correct index
+    local index = tableIndex(activePlayers, playerId)
+    if index then
+        table.remove(activePlayers, index)
+    end
+    
+    UpdateAllClients()
 end)
 
 
@@ -53,11 +72,22 @@ function permission(source)
     end
 end
 
-function tableIndex(tbl, value)
+function tableIndex(tbl, playerId)
     for i, v in ipairs(tbl) do
-        if v == value then
+        if v.id == playerId then
             return i
         end
     end
     return nil
+end
+
+function UpdateAllClients()
+    -- Update all clients with the current player list
+    local players = GetPlayers()
+    for _, playerId in ipairs(players) do
+        local src = tonumber(playerId)
+        if permission(src) then
+            TriggerClientEvent('qb-playerlist:client:manualUpdate', src, activePlayers, disconnectedPlayers)
+        end
+    end
 end
