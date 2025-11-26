@@ -49,9 +49,21 @@ function closeNUI() {
   $.post("http://hpx-playerlist/close", JSON.stringify({}));
 }
 
-function update() { 
-  append("online")
-  append("disconnected")
+function update(data) { 
+  // Only update if menu is visible
+  if ($("body").is(":visible")) {
+    $(".online-list").empty()
+    $(".onlineplayers").html(`${data["activePlayers"].length}`)
+    $(".disconnectedplayers").html(`${data["disconnectedPlayers"].length}`)
+    $.each(data["activePlayers"], function (i, v) { 
+       $(".online-list").append(`
+      <div class="online-box">
+        <div class="left-box"><i class="fa fa-user"  aria-hidden="true"></i></div>
+        <div class="right-box"><div class="name">${v.name} [${v.id}]</div><div class="steam"><span>${v.identifier.substring(0,12)}...</span></div></div>
+      </div>
+       `);
+    });
+  }
 }
 
 
